@@ -1,0 +1,18 @@
+#pragma once
+
+
+enum PATHING {
+	PATHABLE,
+	NOT_PATHABLE,
+	DOORWAY
+};
+
+enum ELEMENTS {
+	FIRE,
+	WATER,
+	EARTH,
+	AIR,
+	BLOOD,
+	LIGHT,
+	VOID
+};
