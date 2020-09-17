@@ -25,3 +25,9 @@ enum TARGET_TYPE {
 enum SPELL {
 	FIREBOLT
 };
+
+enum EFFECT_TYPE {
+	CIRCLE,
+	LINE,
+	CHAIN
+};

@@ -28,6 +28,12 @@
     <Filter Include="Source Files\Spells\FireSpells">
       <UniqueIdentifier>{ec8838d7-f025-48c4-9080-706ffc7f4b8d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\SpellEffects">
+      <UniqueIdentifier>{65e1c60e-c1c5-4c44-a35c-d56fca322dd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SpellEffects">
+      <UniqueIdentifier>{a12a31be-0178-4eeb-9091-4bc394dafa12}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -63,6 +69,12 @@
     <ClCompile Include="FireSpells.h">
       <Filter>Header Files\Spells</Filter>
     </ClCompile>
+    <ClCompile Include="SpellEffect.cpp">
+      <Filter>Source Files\SpellEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseCircle.cpp">
+      <Filter>Source Files\SpellEffects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -85,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="Spell.h">
       <Filter>Header Files\Spells</Filter>
+    </ClInclude>
+    <ClInclude Include="SpellEffect.h">
+      <Filter>Header Files\SpellEffects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

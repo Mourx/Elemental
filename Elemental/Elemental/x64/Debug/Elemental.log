@@ -1,3 +1,7 @@
-﻿  FireBolt.cpp
-c:\users\joel\documents\elemental\elemental\elemental\elemental\firebolt.cpp(37): warning C4553: '==': result of expression not used; did you intend '='?
+﻿  FireSpells.h
+  Player.cpp
+  Spell.cpp
+  SpellSlot.cpp
+  main.cpp
+  Generating Code...
   Elemental.vcxproj -> C:\Users\Joel\Documents\Elemental\Elemental\Elemental\x64\Debug\Elemental.exe

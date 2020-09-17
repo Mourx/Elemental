@@ -40,8 +40,10 @@ void Spell::Draw(RenderWindow* window) {
 	}
 }
 
-void Spell::Collide() {
+SpellEffect* Spell::Collide() {
 	bReachedTarget = true;
+	bCollided = true;
+	return new SpellEffect();
 }
 
 void Spell::EffectUpdate(Time t) {

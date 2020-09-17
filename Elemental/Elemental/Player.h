@@ -4,6 +4,7 @@
 #include "Spell.h"
 #include "FireSpells.h"
 #include "SpellSlot.h"
+#include "SpellEffect.h"
 using namespace sf;
 using namespace std;
 class Player
@@ -31,5 +32,6 @@ private:
 	SpellSlot* rightSpell;
 	vector<Spell*> spellList;
 	vector<Spell*>* activeSpells = new vector<Spell*>(0);
+	vector<SpellEffect*> activeEffects;
 };
 

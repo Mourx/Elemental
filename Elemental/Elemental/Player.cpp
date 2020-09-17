@@ -26,6 +26,13 @@ void Player::Update(Time t) {
 			activeSpells->erase(remove(activeSpells->begin(), activeSpells->end(), spell), activeSpells->end());
 		}
 	}
+	for (SpellEffect* effect : activeEffects) {
+		effect->Update(t);
+		if (!effect->IsFinished()) {
+			activeEffects.erase(remove(activeEffects.begin(), activeEffects.end(), effect), activeEffects.end());
+		}
+	}
+
 }
 
 void Player::Draw(RenderWindow* window) {
@@ -33,6 +40,9 @@ void Player::Draw(RenderWindow* window) {
 	const vector<Spell*> drawables = *activeSpells;
 	for (Spell* spell : drawables) {
 		spell->Draw(window);
+	}
+	for (SpellEffect* effect : activeEffects) {
+		effect->Draw(window);
 	}
 	
 }
@@ -101,14 +111,21 @@ void Player::UpdateCollisions() {
 	for (Spell* spell : *activeSpells) {
 		for (vector<Tile*> rows : currentMap->layout) {
 			for (Tile* tile : rows) {
-				if (tile->icon.getGlobalBounds().intersects(spell->icon.getGlobalBounds())) {
-					spell->Collide();
+				if (!spell->HasCollided() && tile->icon.getGlobalBounds().intersects(spell->icon.getGlobalBounds())) {
+					activeEffects.push_back(spell->Collide());
 				}
 			}
 		}
 		for (Enemy* e : currentMap->enemies) {
-			if (e->icon.getGlobalBounds().intersects(spell->icon.getGlobalBounds())) {
-				spell->Collide();
+			if (!spell->HasCollided() && e->icon.getGlobalBounds().intersects(spell->icon.getGlobalBounds())) {
+				activeEffects.push_back(spell->Collide());
+			}
+		}
+	}
+	for (SpellEffect* effect : activeEffects) {
+		for (Enemy* e : currentMap->enemies) {
+			if (e->icon.getGlobalBounds().intersects(effect->icon.getGlobalBounds())) {
+				effect->AddEnemy(e);
 			}
 		}
 	}

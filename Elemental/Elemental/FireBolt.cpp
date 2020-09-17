@@ -7,7 +7,7 @@ FireBolt::FireBolt() {
 	icon.setTexture(tex);
 	icon.setOrigin(4, 4);
 
-	effectShade.loadFromFile("Textures/shaders/effectShade.vert", Shader::Vertex);
+	effectShade.loadFromFile("Textures/Shaders/effectShade.vert", Shader::Vertex);
 	speed = 150;
 	damage = 5;
 }
@@ -34,9 +34,14 @@ void FireBolt::EffectUpdate(Time t) {
 		effectTimer += time;
 		effectShade.setUniform("time", (effectDuration - effectTimer) / effectDuration);
 		if (effectTimer >= effectDuration) {
-			effectTimer == 0;
+			effectTimer = 0;
 			bEffect = false;
 			bIsFinished = true;
 		}
 	}
+}
+
+SpellEffect* FireBolt::Collide() {
+	Spell::Collide();
+	return new BaseCircle(icon.getPosition(), damage,FIRE);
 }
