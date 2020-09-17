@@ -7,7 +7,7 @@ enum PATHING {
 	DOORWAY
 };
 
-enum ELEMENTS {
+enum ELEMENT {
 	FIRE,
 	WATER,
 	EARTH,
@@ -15,4 +15,13 @@ enum ELEMENTS {
 	BLOOD,
 	LIGHT,
 	VOID
+};
+
+enum TARGET_TYPE {
+	POINT,
+	ENEMY
+};
+
+enum SPELL {
+	FIREBOLT
 };

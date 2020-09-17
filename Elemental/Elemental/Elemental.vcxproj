@@ -148,8 +148,11 @@
   <ItemGroup>
     <ClCompile Include="Dummy.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="FireBolt.cpp" />
+    <ClCompile Include="FireSpells.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Spell.cpp" />
     <ClCompile Include="SpellSlot.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="TileMap.cpp" />
@@ -159,6 +162,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="enums.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Spell.h" />
     <ClInclude Include="SpellSlot.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TileMap.h" />

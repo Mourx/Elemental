@@ -7,6 +7,9 @@ Player::Player(TileMap* c) {
 	icon.setOrigin(16, 16);
 	SetPosition(Vector2f(200, 200));
 	currentMap = c;
+
+	currentSpell = new SpellSlot(activeSpells);
+	currentSpell->SetSpell(FIREBOLT);
 }
 
 Player::~Player() {
@@ -15,6 +18,23 @@ Player::~Player() {
 
 void Player::Update(Time t) {
 	CheckKeys(t);
+	UpdateCollisions();
+
+	for (Spell* spell : *activeSpells) {
+		spell->Update(t);
+		if (spell->IsFinished()) {
+			activeSpells->erase(remove(activeSpells->begin(), activeSpells->end(), spell), activeSpells->end());
+		}
+	}
+}
+
+void Player::Draw(RenderWindow* window) {
+	window->draw(icon);
+	const vector<Spell*> drawables = *activeSpells;
+	for (Spell* spell : drawables) {
+		spell->Draw(window);
+	}
+	
 }
 
 void Player::CheckKeys(Time t) {
@@ -35,6 +55,10 @@ void Player::CheckKeys(Time t) {
 	}
 }
 
+void Player::MousePressed(Vector2i pos) {
+	currentSpell->Fire(Vector2f(pos), icon.getPosition(),new Enemy());
+}
+
 void Player::SetPosition(Vector2f p) {
 	position = p;
 	icon.setPosition(position);
@@ -45,7 +69,7 @@ void Player::CheckMove(Vector2f p) {
 	Sprite moveAttempt = icon;
 	moveAttempt.setPosition(p);
 	moveAttempt.setOrigin(16, 16);
-	moveAttempt.setScale(0.8, 0.8);
+	moveAttempt.setScale(0.8f, 0.8f);
 	
 	for (vector<Tile*> rows : currentMap->layout) {
 		for (Tile* tile : rows) {
@@ -71,4 +95,22 @@ void Player::CheckMove(Vector2f p) {
 	if (bPrevented == false) {
 		SetPosition(p);
 	}
+}
+
+void Player::UpdateCollisions() {
+	for (Spell* spell : *activeSpells) {
+		for (vector<Tile*> rows : currentMap->layout) {
+			for (Tile* tile : rows) {
+				if (tile->icon.getGlobalBounds().intersects(spell->icon.getGlobalBounds())) {
+					spell->Collide();
+				}
+			}
+		}
+		for (Enemy* e : currentMap->enemies) {
+			if (e->icon.getGlobalBounds().intersects(spell->icon.getGlobalBounds())) {
+				spell->Collide();
+			}
+		}
+	}
+	
 }

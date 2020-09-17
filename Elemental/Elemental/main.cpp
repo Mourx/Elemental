@@ -26,12 +26,13 @@ int main() {
 			
 			if (event.type == sf::Event::Closed) window.close();
 			if (event.type == Event::MouseButtonPressed) {
-
+				Vector2i coOrds = Vector2i(window.mapPixelToCoords(Mouse::getPosition(window)));
+				player->MousePressed(coOrds);
 			}
 		}
 		window.clear(Color::Black);
 		currentMap->Draw(&window);
-		window.draw(player->icon);
+		player->Draw(&window);
 
 
 		window.display();

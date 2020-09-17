@@ -19,6 +19,15 @@
     <Filter Include="Source Files\Enemies">
       <UniqueIdentifier>{92ab75a2-df79-4f93-9e82-8c704b929b6d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Spells">
+      <UniqueIdentifier>{4e8b4a81-839d-4a71-9c52-c3ab4b3820bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Spells">
+      <UniqueIdentifier>{5c2b8b8b-0c80-4911-8719-112574c174a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Spells\FireSpells">
+      <UniqueIdentifier>{ec8838d7-f025-48c4-9080-706ffc7f4b8d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,6 +54,15 @@
     <ClCompile Include="SpellSlot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Spell.cpp">
+      <Filter>Source Files\Spells</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBolt.cpp">
+      <Filter>Source Files\Spells\FireSpells</Filter>
+    </ClCompile>
+    <ClCompile Include="FireSpells.h">
+      <Filter>Header Files\Spells</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -64,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="SpellSlot.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spell.h">
+      <Filter>Header Files\Spells</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

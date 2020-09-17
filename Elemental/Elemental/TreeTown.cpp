@@ -6,7 +6,7 @@ TreeTown::TreeTown() {
 	for (int i = 0; i < 10; i++) {
 		vector<Tile*> tiles;
 		for (int j = 0; j < 10; j++) {
-			tiles.push_back(new Tile(backgroundTex, Vector2f(i * 32, j * 32),PATHABLE));
+			tiles.push_back(new Tile(backgroundTex, Vector2f((float)i * 32, (float)j * 32),PATHABLE));
 		}
 		background.push_back(tiles);
 	}
@@ -58,7 +58,7 @@ TreeTown::TreeTown() {
 		vector<Tile*> tiles;
 		for (int j = 0; j < 10; j++) {
 			string type = layoutString[j][i];
-			tiles.push_back(new Tile(textures[type], Vector2f(i * 32, j * 32),pathing[type]));
+			tiles.push_back(new Tile(textures[type], Vector2f((float)i * 32, (float)j * 32),pathing[type]));
 		}
 		layout.push_back(tiles);
 	}
