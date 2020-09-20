@@ -5,11 +5,14 @@ BaseCircle::BaseCircle(Vector2f pos,float dmg,ELEMENT type) {
 	icon.setTexture(tex);
 	icon.setOrigin(16, 16);
 	icon.setPosition(pos);
-	effectTimer = 0;
+	effectTimer = -100000;
 	damage = dmg;
 	switch (type) {
 	case FIRE:
 		effectShade.loadFromFile("Textures/Shaders/effectFire.vert", Shader::Vertex);
+		break;
+	case WATER:
+		effectShade.loadFromFile("Textures/Shaders/effectWater.vert", Shader::Vertex);
 		break;
 	default:
 		break;

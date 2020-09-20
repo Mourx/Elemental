@@ -14,7 +14,7 @@ int main() {
 
 	View camera = window.getDefaultView();
 	camera.zoom(1);
-	
+	bool bMouseHeld = false;
 	while (window.isOpen()) {
 		window.setView(camera);
 		sf::Time elapsed = clock.restart();
@@ -25,10 +25,18 @@ int main() {
 		while (window.pollEvent(event)) {
 			
 			if (event.type == sf::Event::Closed) window.close();
-			if (event.type == Event::MouseButtonPressed) {
+			if (event.type == Event::MouseButtonPressed ) {
+				bMouseHeld = true;
 				Vector2i coOrds = Vector2i(window.mapPixelToCoords(Mouse::getPosition(window)));
 				player->MousePressed(coOrds);
 			}
+			if (event.type == Event::MouseButtonReleased) {
+				bMouseHeld = false;
+			}
+		}
+		if (bMouseHeld) {
+			Vector2i coOrds = Vector2i(window.mapPixelToCoords(Mouse::getPosition(window)));
+			player->MousePressed(coOrds);
 		}
 		window.clear(Color::Black);
 		currentMap->Draw(&window);

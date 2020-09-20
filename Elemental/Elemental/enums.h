@@ -23,7 +23,8 @@ enum TARGET_TYPE {
 };
 
 enum SPELL {
-	FIREBOLT
+	FIREBOLT,
+	WATERBALL
 };
 
 enum EFFECT_TYPE {

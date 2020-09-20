@@ -14,10 +14,13 @@ public:
 	virtual void Update(Time t);
 	virtual void Draw(RenderWindow* window);
 	virtual SpellEffect* Collide();
+	SPELL GetName() { return name;  }
 	bool IsFinished() { return bIsFinished; }
 	bool HasCollided() { return bCollided; }
+	float GetCooldown() { return cooldown; }
 	Sprite icon;
 protected:
+	float cooldown = 1;
 	virtual void EffectUpdate(Time t);
 	Texture tex;
 	ELEMENT element;
@@ -35,4 +38,5 @@ protected:
 	bool bEffect = false;
 	bool bCollided = false;
 	Shader effectShade;
+	SPELL name;
 };

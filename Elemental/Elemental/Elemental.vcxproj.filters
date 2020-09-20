@@ -75,6 +75,9 @@
     <ClCompile Include="BaseCircle.cpp">
       <Filter>Source Files\SpellEffects</Filter>
     </ClCompile>
+    <ClCompile Include="WaterBall.cpp">
+      <Filter>Source Files\Spells\FireSpells</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -100,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="SpellEffect.h">
       <Filter>Header Files\SpellEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterSpells.h">
+      <Filter>Header Files\Spells</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

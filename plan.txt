@@ -1,0 +1,5 @@
+two slots:
+  left
+  right
+can cycle spell within elements with q/e (left/right)
+can cycle current elements with c/v (left/right)

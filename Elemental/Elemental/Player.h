@@ -3,6 +3,7 @@
 #include "TileMap.h"
 #include "Spell.h"
 #include "FireSpells.h"
+#include "WaterSpells.h"
 #include "SpellSlot.h"
 #include "SpellEffect.h"
 using namespace sf;
@@ -27,11 +28,13 @@ private:
 	Vector2f position;
 	float HSpeed = 45;
 	float VSpeed = 45;
-	SpellSlot* currentSpell;
+	int spellIndexLeft = 0;
+	int spellIndexRight = 0;
 	SpellSlot* leftSpell;
 	SpellSlot* rightSpell;
 	vector<Spell*> spellList;
 	vector<Spell*>* activeSpells = new vector<Spell*>(0);
 	vector<SpellEffect*> activeEffects;
+	map<ELEMENT, vector<SPELL>* > spellTable;
 };
 

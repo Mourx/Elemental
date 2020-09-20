@@ -9,7 +9,10 @@ FireBolt::FireBolt() {
 
 	effectShade.loadFromFile("Textures/Shaders/effectShade.vert", Shader::Vertex);
 	speed = 150;
-	damage = 5;
+	damage = 15;
+	cooldown = 1;
+	name = FIREBOLT;
+	element = FIRE;
 }
 
 FireBolt::~FireBolt() {
@@ -43,5 +46,5 @@ void FireBolt::EffectUpdate(Time t) {
 
 SpellEffect* FireBolt::Collide() {
 	Spell::Collide();
-	return new BaseCircle(icon.getPosition(), damage,FIRE);
+	return new BaseCircle(icon.getPosition(), damage,element);
 }
