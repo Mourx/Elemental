@@ -13,6 +13,7 @@ FireBolt::FireBolt() {
 	cooldown = 1;
 	name = FIREBOLT;
 	element = FIRE;
+	targetType = POINT;
 }
 
 FireBolt::~FireBolt() {
@@ -46,5 +47,5 @@ void FireBolt::EffectUpdate(Time t) {
 
 SpellEffect* FireBolt::Collide() {
 	Spell::Collide();
-	return new BaseCircle(icon.getPosition(), damage,element);
+	return new BaseCircle(icon.getPosition(), damage,element,EFFECT_STATIC,1.0f);
 }

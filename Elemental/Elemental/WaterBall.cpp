@@ -13,6 +13,7 @@ WaterBall::WaterBall() {
 
 	name = WATERBALL;
 	element = WATER;
+	targetType = POINT;
 }
 
 WaterBall::~WaterBall(){
@@ -22,7 +23,7 @@ WaterBall::~WaterBall(){
 void WaterBall::Fire(Vector2f target, Vector2f origin, Enemy* enemy) {
 	targetPoint = target;
 	targetEnemy = enemy;
-	Vector2f distance = target - origin;
+	Vector2f distance = targetPoint - origin;
 	float absDist = sqrt(pow(distance.x, 2) + pow(distance.y, 2));
 
 	hDirection = distance.x / absDist;
@@ -46,5 +47,5 @@ void WaterBall::EffectUpdate(Time t) {
 }
 SpellEffect* WaterBall::Collide() {
 	Spell::Collide();
-	return new BaseCircle(icon.getPosition(), damage, element);
+	return new BaseCircle(icon.getPosition(), damage, element,EFFECT_STATIC,1.0f);
 }

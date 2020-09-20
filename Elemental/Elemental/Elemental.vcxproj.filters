@@ -34,6 +34,12 @@
     <Filter Include="Source Files\SpellEffects">
       <UniqueIdentifier>{a12a31be-0178-4eeb-9091-4bc394dafa12}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Spells\WaterSpells">
+      <UniqueIdentifier>{8fb8ec4c-96b8-46f6-b8e1-0cfe8d9109d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Spells\AirSpells">
+      <UniqueIdentifier>{ae041f32-0dbc-4f8d-8a0d-7fef0150922c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -76,7 +82,16 @@
       <Filter>Source Files\SpellEffects</Filter>
     </ClCompile>
     <ClCompile Include="WaterBall.cpp">
-      <Filter>Source Files\Spells\FireSpells</Filter>
+      <Filter>Source Files\Spells\WaterSpells</Filter>
+    </ClCompile>
+    <ClCompile Include="LightningStrike.cpp">
+      <Filter>Source Files\Spells\AirSpells</Filter>
+    </ClCompile>
+    <ClCompile Include="InstantEffect.cpp">
+      <Filter>Source Files\SpellEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterPulse.cpp">
+      <Filter>Source Files\Spells\WaterSpells</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +120,9 @@
       <Filter>Header Files\SpellEffects</Filter>
     </ClInclude>
     <ClInclude Include="WaterSpells.h">
+      <Filter>Header Files\Spells</Filter>
+    </ClInclude>
+    <ClInclude Include="AirSpells.h">
       <Filter>Header Files\Spells</Filter>
     </ClInclude>
   </ItemGroup>

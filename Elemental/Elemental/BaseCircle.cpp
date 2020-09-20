@@ -1,13 +1,15 @@
 #include "SpellEffect.h"
 
-BaseCircle::BaseCircle(Vector2f pos,float dmg,ELEMENT type) {
+BaseCircle::BaseCircle(Vector2f pos,float dmg,ELEMENT ele, EFFECT_TYPE effType,float size) {
 	tex.loadFromFile("Textures/SpellEffects/BaseCircle.png");
 	icon.setTexture(tex);
 	icon.setOrigin(16, 16);
 	icon.setPosition(pos);
 	effectTimer = -100000;
+	icon.setScale(size,size);
 	damage = dmg;
-	switch (type) {
+	type = effType;
+	switch (ele) {
 	case FIRE:
 		effectShade.loadFromFile("Textures/Shaders/effectFire.vert", Shader::Vertex);
 		break;

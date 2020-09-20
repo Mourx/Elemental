@@ -14,6 +14,7 @@ public:
 	virtual void Update(Time t);
 	virtual void Draw(RenderWindow* window);
 	virtual SpellEffect* Collide();
+	TARGET_TYPE GetType() { return targetType; }
 	SPELL GetName() { return name;  }
 	bool IsFinished() { return bIsFinished; }
 	bool HasCollided() { return bCollided; }

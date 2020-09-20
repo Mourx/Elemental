@@ -31,7 +31,9 @@ int main() {
 				player->MousePressed(coOrds);
 			}
 			if (event.type == Event::MouseButtonReleased) {
-				bMouseHeld = false;
+				if (!(Mouse::isButtonPressed(Mouse::Button::Left) || Mouse::isButtonPressed(Mouse::Button::Right))) {
+					bMouseHeld = false;
+				}
 			}
 		}
 		if (bMouseHeld) {

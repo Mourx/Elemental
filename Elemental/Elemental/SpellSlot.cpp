@@ -1,54 +1,120 @@
 #include "SpellSlot.h"
 
 
-SpellSlot::SpellSlot(vector<Spell*>* activeSpells,vector<SPELL>* list) {
+SpellSlot::SpellSlot(vector<Spell*>* activeSpells,vector<SPELL>* list, ELEMENT e) {
 	active = activeSpells;
-
+	currentElement = e;
+	spellList = list;
 	texBackground.loadFromFile("Textures/Spells/SpellSlots/SpellSlot_Background.png");
 	texCooldown.loadFromFile("Textures/Spells/SpellSlots/SpellSlot_Cooldown.png");
 
 	cooldownShader.loadFromFile("Textures/Shaders/effectCooldown.vert", Shader::Vertex);
-	spellList = spellList;
-	icon.setTexture(texBackground);
+	notCurrent.loadFromFile("Textures/Shaders/unavailable.vert", Shader::Vertex);
+	currentBackground.setTexture(texBackground);
+	prevBackground.setTexture(texBackground);
+	nextBackground.setTexture(texBackground);
+
 	cooldownIcon.setTexture(texCooldown);
-	//cooldownIcon.setOrigin(0, 32);
+	cooldownIcon.setScale(1, 0);
+	spellIndex = 0;
+
+	currentEleIcon.setOrigin(4, 4);
+	elementIcon.loadFromFile("Textures/Spells/Fire/Fire.png");
+	UpdateSpells();
 }
 
 SpellSlot::~SpellSlot() {
 
 }
 
-void SpellSlot::SetSpell(SPELL s) {
-	spell = s;
-	Spell* instance = new Spell();
-	switch (spell) {
+Spell* SpellSlot::SetSpell(SPELL s,Spell* sp) {
+	sp = new Spell();
+	switch (s) {
 	case FIREBOLT:
-		instance = new FireBolt();
+		sp = new FireBolt();
 		break;
 	case WATERBALL:
-		instance = new WaterBall();
+		sp = new WaterBall();
+		break;
+	case WATERPULSE:
+		sp = new WaterPulse();
+		break;
+	case LIGHTNINGSTRIKE:
+		sp = new LightningStrike();
 		break;
 	default:
 		break;
 	}
-	currentSpell = instance;
-	spellIcon = currentSpell->icon;
-	
+	return sp;
 }
 
+void SpellSlot::NextSpell() {
+	spellIndex++;
+	if (spellIndex >= spellList->size()) {
+		spellIndex = 0;
+	}
+	UpdateSpells();
+}
+
+void SpellSlot::UpdateSpells() {
+	currentSpell = SetSpell((*spellList)[spellIndex], currentSpell);
+	spellIcon = currentSpell->icon;
+
+	switch (currentElement) {
+	case FIRE:
+		elementIcon.loadFromFile("Textures/Spells/Fire/Fire.png");
+		break;
+	case WATER:
+		elementIcon.loadFromFile("Textures/Spells/Water/Water.png");
+		break;
+	case EARTH:
+		elementIcon.loadFromFile("Textures/Spells/Earth/Earth.png");
+		break;
+	case AIR:
+		elementIcon.loadFromFile("Textures/Spells/Air/Air.png");
+		break;
+	case BLOOD:
+		elementIcon.loadFromFile("Textures/Spells/Blood/Blood.png");
+		break;
+	case LIGHT:
+		elementIcon.loadFromFile("Textures/Spells/Light/Light.png");
+		break;
+	case VOID:
+		elementIcon.loadFromFile("Textures/Spells/Void/Void.png");
+		break;
+	}
+	
+	currentEleIcon.setTexture(elementIcon);
+
+
+	int prevIndex = spellIndex - 1;
+	if (prevIndex <= -1) prevIndex = (*spellList).size()-1;
+	prevSpell = SetSpell((*spellList)[prevIndex], prevSpell);
+	prevSpellIcon = prevSpell->icon;
+	int nextIndex = spellIndex + 1;
+	if (nextIndex >= (*spellList).size()) nextIndex = 0;
+	nextSpell = SetSpell((*spellList)[nextIndex], prevSpell);
+	nextSpellIcon = nextSpell->icon;
+}
 
 void SpellSlot::Fire(Vector2f target, Vector2f origin, Enemy* enemy) {
 	
 	currentSpell->Fire(target, origin, enemy);
 	active->push_back(currentSpell);
+	currentSpell = SetSpell((*spellList)[spellIndex], currentSpell);
 	bReady = false;
 }
 
 void SpellSlot::Draw(RenderWindow* window) {
-	window->draw(icon);
+	window->draw(currentBackground);
+	window->draw(prevBackground,&notCurrent);
+	window->draw(nextBackground,&notCurrent);
+	window->draw(prevSpellIcon, &notCurrent);
+	window->draw(nextSpellIcon, &notCurrent);
+	
 	window->draw(spellIcon);
 	window->draw(cooldownIcon, &cooldownShader);
-	
+	window->draw(currentEleIcon);
 	for (Spell* spell : *active) {
 		window->draw(spell->icon);
 	}
@@ -71,7 +137,23 @@ void SpellSlot::Update(Time t) {
 }
 
 void SpellSlot::SetPosition(Vector2f pos) {
-	icon.setPosition(pos);
-	cooldownIcon.setPosition(pos );
+	currentBackground.setPosition(pos);
+	prevBackground.setPosition(pos + Vector2f(-20, 0));
+	nextBackground.setPosition(pos + Vector2f(20, 0));
+
+
+	cooldownIcon.setPosition(pos);
 	spellIcon.setPosition(pos + Vector2f(8, 8));
+	prevSpellIcon.setPosition(prevBackground.getPosition() + Vector2f(8, 8));
+	nextSpellIcon.setPosition(nextBackground.getPosition() + Vector2f(8, 8));
+
+	currentEleIcon.setPosition(pos + Vector2f(8,8) + Vector2f(0,18));
+}
+
+void SpellSlot::SetSpellList(vector<SPELL>* list, ELEMENT e) {
+	spellList = list;
+	currentElement = e;
+	//cooldownTimer -= 1;
+
+	UpdateSpells();
 }

@@ -151,6 +151,8 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FireBolt.cpp" />
     <ClCompile Include="FireSpells.h" />
+    <ClCompile Include="InstantEffect.cpp" />
+    <ClCompile Include="LightningStrike.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Spell.cpp" />
@@ -160,8 +162,10 @@
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="TreeTown.cpp" />
     <ClCompile Include="WaterBall.cpp" />
+    <ClCompile Include="WaterPulse.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AirSpells.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="enums.h" />
     <ClInclude Include="Player.h" />

@@ -13,6 +13,7 @@ public:
 	virtual void Draw(RenderWindow* window);
 	virtual void Update(Time t);
 	void AddEnemy(Enemy* e) { affectedEnemies.push_back(e); }
+	EFFECT_TYPE GetType() { return type; }
 	bool IsFinished() { return bEffect; }
 	Sprite icon;
 protected:
@@ -24,14 +25,22 @@ protected:
 	float effectDuration = 300000;
 	float effectTimer = 0;
 	bool bEffect = true;
+	EFFECT_TYPE type;
 };
 
 class BaseCircle : public SpellEffect
 {
 public:
-	BaseCircle(Vector2f pos, float dmg, ELEMENT type);
+	BaseCircle(Vector2f pos, float dmg, ELEMENT type, EFFECT_TYPE effType,float size);
 	~BaseCircle();
-
 	void Update(Time t);
 
+};
+
+class InstantEffect : public SpellEffect
+{
+public:
+	InstantEffect(Enemy* e, float dmg, ELEMENT type);
+	~InstantEffect();
+	void Update(Time t);
 };

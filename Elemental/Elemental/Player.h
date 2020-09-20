@@ -4,6 +4,7 @@
 #include "Spell.h"
 #include "FireSpells.h"
 #include "WaterSpells.h"
+#include "AirSpells.h"
 #include "SpellSlot.h"
 #include "SpellEffect.h"
 using namespace sf;
@@ -25,6 +26,8 @@ private:
 	void CheckKeys(Time t);
 	void CheckMove(Vector2f pos);
 	void UpdateCollisions();
+	void NextElementLeft();
+	void NextElementRight();
 	Vector2f position;
 	float HSpeed = 45;
 	float VSpeed = 45;
@@ -35,6 +38,29 @@ private:
 	vector<Spell*> spellList;
 	vector<Spell*>* activeSpells = new vector<Spell*>(0);
 	vector<SpellEffect*> activeEffects;
+	vector<ELEMENT> currentElements;
 	map<ELEMENT, vector<SPELL>* > spellTable;
+	
+	vector<ELEMENT> elementOrder;
+	float leftElementIndex = 0;
+	float rightElementIndex = 1;
+
+	Sprite SpellBackLayerLeft;
+	Sprite SpellBackLayerRight;
+	Texture leftBackTex;
+	Texture rightBackTex;
+
+	bool bSwitchedSpellLeft = false;
+	bool bSwitchedSpellRight = false;
+	float spellSwitchCooldown = 0.3;
+	float spellSwitchTimerLeft = 0;
+	float spellSwitchTimerRight = 0;
+
+	bool bSwitchedElementLeft = false;
+	bool bSwitchedElementRight = false;
+	float elementSwitchCooldown = 2;
+	float elementSwitchTimerLeft = 0;
+	float elementSwitchTimerRight = 0;
+
 };
 

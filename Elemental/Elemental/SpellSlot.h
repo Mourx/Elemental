@@ -3,6 +3,7 @@
 #include "Spell.h"
 #include "FireSpells.h"
 #include "WaterSpells.h"
+#include "AirSpells.h"
 using namespace sf;
 using namespace std;
 
@@ -10,15 +11,19 @@ using namespace std;
 class SpellSlot
 {
 public:
-	SpellSlot(vector<Spell*>* activeSpells,vector<SPELL>* list);
+	SpellSlot(vector<Spell*>* activeSpells,vector<SPELL>* list, ELEMENT e);
 	~SpellSlot();
-	void SetSpell(SPELL s);
+	Spell* SetSpell(SPELL s, Spell* spell);
 	void Fire(Vector2f target, Vector2f origin, Enemy* enemy);
 	void Draw(RenderWindow* window);
 	void Update(Time t);
 	void SetPosition(Vector2f pos);
+	void SetSpellList(vector<SPELL>* list, ELEMENT e);
+	void UpdateSpells();
+	void NextSpell();
+	ELEMENT GetElement() { return currentElement; }
 	bool IsReady() { return bReady; }
-	Sprite icon;
+	Sprite currentBackground;
 protected:
 	bool bReady = true;
 	SPELL spell;
@@ -28,9 +33,25 @@ protected:
 	Texture texBackground;
 	Texture texCooldown;
 	Shader cooldownShader;
+	float spellIndex;
 	float cooldown;
 	float cooldownTimer;
 	vector<Spell*>* active;
 	vector<SPELL>* spellList;
+	ELEMENT currentElement;
+	Sprite prevSpellIcon;
+	Sprite nextSpellIcon;
+	Sprite prevBackground;
+	Sprite nextBackground;
+	Spell* prevSpell;
+	Spell* nextSpell;
+	Shader notCurrent;
+
+
+	Texture elementIcon;
+	Sprite currentEleIcon;
+	Sprite prevElement;
+	Sprite nextElement;
+
 };
 
