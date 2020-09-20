@@ -34,7 +34,7 @@ protected:
 	TARGET_TYPE targetType;
 	bool bReachedTarget;
 	bool bIsFinished;
-	float effectDuration = 200000;
+	float effectDuration = 0.5;
 	float effectTimer = 0;
 	bool bEffect = false;
 	bool bCollided = false;

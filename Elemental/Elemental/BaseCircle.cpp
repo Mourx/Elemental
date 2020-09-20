@@ -5,7 +5,7 @@ BaseCircle::BaseCircle(Vector2f pos,float dmg,ELEMENT ele, EFFECT_TYPE effType,f
 	icon.setTexture(tex);
 	icon.setOrigin(16, 16);
 	icon.setPosition(pos);
-	effectTimer = -100000;
+	effectTimer = 0;
 	icon.setScale(size,size);
 	damage = dmg;
 	type = effType;
@@ -28,7 +28,7 @@ BaseCircle::~BaseCircle() {
 
 void BaseCircle::Update(Time t) {
 	if (bEffect) {
-		float time = (float)t.asMicroseconds();
+		float time = (float)t.asSeconds();
 		effectTimer += time;
 		float diff = (effectDuration - effectTimer) / effectDuration;
 		effectShade.setUniform("time", diff);

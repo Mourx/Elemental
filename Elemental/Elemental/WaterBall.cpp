@@ -35,9 +35,10 @@ void WaterBall::Fire(Vector2f target, Vector2f origin, Enemy* enemy) {
 
 void WaterBall::EffectUpdate(Time t) {
 	if (bEffect) {
-		float time = (float)t.asMicroseconds();
+		float time = (float)t.asSeconds();
 		effectTimer += time;
-		effectShade.setUniform("time", (effectDuration - effectTimer) / effectDuration);
+		float diff = (effectDuration - effectTimer) / effectDuration;
+		effectShade.setUniform("time", diff);
 		if (effectTimer >= effectDuration) {
 			effectTimer = 0;
 			bEffect = false;

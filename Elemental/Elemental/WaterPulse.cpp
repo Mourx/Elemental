@@ -14,7 +14,7 @@ WaterPulse::WaterPulse() {
 	element = WATER;
 	targetType = SELF;
 
-	effectDuration = 10;
+	effectDuration = 0.05;
 }
 
 WaterPulse::~WaterPulse() {
@@ -37,7 +37,7 @@ void WaterPulse::Fire(Vector2f target, Vector2f origin, Enemy* enemy) {
 
 void WaterPulse::EffectUpdate(Time t) {
 	if (bEffect) {
-		float time = (float)t.asMicroseconds();
+		float time = (float)t.asSeconds();
 		effectTimer += time;
 		float effect = (effectDuration - effectTimer) / effectDuration;
 		effectShade.setUniform("time", effect);

@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "TileMap.h"
 #include "Enemy.h"
+#include "icon.h"
 using namespace sf;
 using namespace std;
 
@@ -11,7 +12,7 @@ int main() {
 	TileMap* currentMap;
 	currentMap = new TreeTown();
 	Player* player = new Player(currentMap);
-
+	window.setIcon(gimp_image.width,gimp_image.height,gimp_image.pixel_data);
 	View camera = window.getDefaultView();
 	camera.zoom(1);
 	bool bMouseHeld = false;

@@ -125,5 +125,8 @@
     <ClInclude Include="AirSpells.h">
       <Filter>Header Files\Spells</Filter>
     </ClInclude>
+    <ClInclude Include="icon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

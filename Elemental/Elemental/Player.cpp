@@ -75,6 +75,12 @@ void Player::Update(Time t) {
 			activeEffects.erase(remove(activeEffects.begin(), activeEffects.end(), effect), activeEffects.end());
 		}
 	}
+	for (Enemy* e : currentMap->enemies) {
+		e->Update(t);
+	
+	}
+
+
 	SetPosition(position);
 	leftSpell->Update(t);
 	rightSpell->Update(t);
@@ -181,14 +187,33 @@ void Player::CheckKeys(Time t) {
 void Player::MousePressed(Vector2i pos) {
 	if (Mouse::isButtonPressed(Mouse::Button::Left)) {
 		if (leftSpell->IsReady()) {
-			leftSpell->Fire(Vector2f(pos), icon.getPosition(), new Enemy());
+			if (leftSpell->GetTargetType() == ENEMY) {
+				for (Enemy* e : currentMap->enemies) {
+					if (e->icon.getGlobalBounds().contains(Vector2f(pos))) {
+						leftSpell->Fire(Vector2f(pos), icon.getPosition(), e);
+						break;
+					}
+				}
+			}
+			else {
+				leftSpell->Fire(Vector2f(pos), icon.getPosition(), new Enemy());
+			}
 		
 		}
 	}
 	if (Mouse::isButtonPressed(Mouse::Button::Right)) {
 		if (rightSpell->IsReady()) {
-			rightSpell->Fire(Vector2f(pos), icon.getPosition(), new Enemy());
-			
+			if (rightSpell->GetTargetType() == ENEMY) {
+				for (Enemy* e : currentMap->enemies) {
+					if (e->icon.getGlobalBounds().contains(Vector2f(pos))) {
+						rightSpell->Fire(Vector2f(pos), icon.getPosition(), e);
+						break;
+					}
+				}
+			}
+			else {
+				rightSpell->Fire(Vector2f(pos), icon.getPosition(), new Enemy());
+			}
 		}
 	}
 	SetPosition(position);
@@ -273,7 +298,7 @@ void Player::UpdateCollisions() {
 
 void Player::NextElementLeft() {
 	leftElementIndex++;
-	while (spellTable[elementOrder[leftElementIndex]]->size() == 0) {
+	while (spellTable[elementOrder[leftElementIndex]]->size() == 0 || leftElementIndex == rightElementIndex) {
 		leftElementIndex++;
 		if (leftElementIndex >= elementOrder.size()) leftElementIndex = 0;
 
@@ -284,7 +309,7 @@ void Player::NextElementLeft() {
 
 void Player::NextElementRight() {
 	rightElementIndex++;
-	while (spellTable[elementOrder[rightElementIndex]]->size() == 0) {
+	while (spellTable[elementOrder[rightElementIndex]]->size() == 0 || leftElementIndex == rightElementIndex) {
 		rightElementIndex++;
 		if (rightElementIndex >= elementOrder.size()) rightElementIndex = 0;
 

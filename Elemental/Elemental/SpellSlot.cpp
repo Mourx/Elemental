@@ -115,15 +115,10 @@ void SpellSlot::Draw(RenderWindow* window) {
 	window->draw(spellIcon);
 	window->draw(cooldownIcon, &cooldownShader);
 	window->draw(currentEleIcon);
-	for (Spell* spell : *active) {
-		window->draw(spell->icon);
-	}
+	
 }
 
 void SpellSlot::Update(Time t) {
-	for (Spell* spell : *active) {
-		spell->Update(t);
-	}
 	if (bReady == false) {
 		float time = t.asSeconds();
 		cooldownTimer += time;
@@ -154,6 +149,8 @@ void SpellSlot::SetSpellList(vector<SPELL>* list, ELEMENT e) {
 	spellList = list;
 	currentElement = e;
 	//cooldownTimer -= 1;
-
+	if (spellIndex >= spellList->size()) {
+		spellIndex = 0;
+	}
 	UpdateSpells();
 }

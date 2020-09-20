@@ -21,6 +21,7 @@ public:
 	void SetSpellList(vector<SPELL>* list, ELEMENT e);
 	void UpdateSpells();
 	void NextSpell();
+	TARGET_TYPE GetTargetType() { return currentSpell->GetType(); }
 	ELEMENT GetElement() { return currentElement; }
 	bool IsReady() { return bReady; }
 	Sprite currentBackground;
