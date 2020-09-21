@@ -1,10 +1,11 @@
 #pragma once
 #include "enums.h"
 #include <SFML/Graphics.hpp>
-#include "Enemy.h"
 #include "SpellEffect.h"
+#include "Enemy.h"
 using namespace sf;
 using namespace std;
+
 class Spell
 {
 public:

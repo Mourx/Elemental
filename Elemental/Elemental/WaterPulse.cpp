@@ -8,13 +8,13 @@ WaterPulse::WaterPulse() {
 	effectShade.loadFromFile("Textures/Shaders/effectShade.vert", Shader::Vertex);
 	speed = 0;
 	damage = 20;
-	cooldown = 0.8;
+	cooldown = 0.8f;
 
 	name = WATERPULSE;
 	element = WATER;
 	targetType = SELF;
 
-	effectDuration = 0.05;
+	effectDuration = 0.05f;
 }
 
 WaterPulse::~WaterPulse() {

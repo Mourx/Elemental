@@ -149,12 +149,17 @@
     <ClCompile Include="BaseCircle.cpp" />
     <ClCompile Include="Dummy.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyAttack.cpp" />
+    <ClCompile Include="EnemyMelee.cpp" />
+    <ClCompile Include="EnemyProjectile.cpp" />
+    <ClCompile Include="enums.cpp" />
     <ClCompile Include="FireBolt.cpp" />
     <ClCompile Include="FireSpells.h" />
     <ClCompile Include="InstantEffect.cpp" />
     <ClCompile Include="LightningStrike.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Slime.cpp" />
     <ClCompile Include="Spell.cpp" />
     <ClCompile Include="SpellEffect.cpp" />
     <ClCompile Include="SpellSlot.cpp" />
@@ -167,6 +172,7 @@
   <ItemGroup>
     <ClInclude Include="AirSpells.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyAttack.h" />
     <ClInclude Include="enums.h" />
     <ClInclude Include="icon.h" />
     <ClInclude Include="Player.h" />
@@ -175,6 +181,7 @@
     <ClInclude Include="SpellSlot.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TileMap.h" />
+    <ClInclude Include="WaterEnemies.h" />
     <ClInclude Include="WaterSpells.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -9,7 +9,7 @@ WaterBall::WaterBall() {
 	effectShade.loadFromFile("Textures/Shaders/effectShade.vert", Shader::Vertex);
 	speed = 250;
 	damage = 2;
-	cooldown = 0.3;
+	cooldown = 0.3f;
 
 	name = WATERBALL;
 	element = WATER;

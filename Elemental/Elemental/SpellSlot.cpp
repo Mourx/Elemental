@@ -76,7 +76,7 @@ void SpellSlot::UpdateSpells() {
 	case BLOOD:
 		elementIcon.loadFromFile("Textures/Spells/Blood/Blood.png");
 		break;
-	case LIGHT:
+	case SOUL:
 		elementIcon.loadFromFile("Textures/Spells/Light/Light.png");
 		break;
 	case VOID:
@@ -88,7 +88,7 @@ void SpellSlot::UpdateSpells() {
 
 
 	int prevIndex = spellIndex - 1;
-	if (prevIndex <= -1) prevIndex = (*spellList).size()-1;
+	if (prevIndex <= -1) prevIndex = (int)(*spellList).size()-1;
 	prevSpell = SetSpell((*spellList)[prevIndex], prevSpell);
 	prevSpellIcon = prevSpell->icon;
 	int nextIndex = spellIndex + 1;

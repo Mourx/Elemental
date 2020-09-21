@@ -4,7 +4,8 @@
 #include "enums.h"
 using namespace sf;
 using namespace std;
-
+class EnemyAttack;
+class Enemy;
 class SpellEffect
 {
 public:
@@ -26,6 +27,7 @@ protected:
 	float effectTimer = 0;
 	bool bEffect = true;
 	EFFECT_TYPE type;
+	ELEMENT element;
 };
 
 class BaseCircle : public SpellEffect

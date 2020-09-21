@@ -13,7 +13,7 @@ enum ELEMENT {
 	EARTH,
 	AIR,
 	BLOOD,
-	LIGHT,
+	SOUL,
 	VOID
 };
 
@@ -34,3 +34,20 @@ enum SPELL {
 	WATERPULSE,
 	LIGHTNINGSTRIKE
 };
+
+
+static struct {
+	float matchups[7][7] = {
+		{0.5,0.5,1,1.5,1,1,1.5},
+		{1.5,0.5,0.5,1,1,1,1.5},
+		{1,1.5,0.5,0.5,1,1,1.5},
+		{0.5,1,1.5,0.5,1,1,1.5},
+		{1,1,1,1,1.5,1.5,1.5},
+		{1,1,1,1,1.5,1.5,1.5},
+		{1.5,1.5,1.5,1.5,1.5,1.5,0}
+	};
+	float GetMultiplier(ELEMENT spellType, ELEMENT targetType) {
+		float multiplier = matchups[(int)spellType][(int)targetType];
+		return multiplier;
+	}
+}matchups;

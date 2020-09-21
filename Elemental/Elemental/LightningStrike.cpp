@@ -8,10 +8,10 @@ LightningStrike::LightningStrike() {
 	effectShade.loadFromFile("Textures/Shaders/effectShade.vert", Shader::Vertex);
 	speed = 30;
 	damage = 15;
-	cooldown = 0.8;
+	cooldown = 0.8f;
 	effectDuration = 2;
 	name = WATERBALL;
-	element = WATER;
+	element = AIR;
 	targetType = ENEMY;
 }
 

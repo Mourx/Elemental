@@ -25,5 +25,8 @@ void TileMap::Draw(RenderWindow* window) {
 	for (Enemy* e : enemies) {
 		e->Draw(window);
 	}
+	for (EnemyAttack* atk : (*enemyAttacks)) {
+		atk->Draw(window);
+	}
 
 }

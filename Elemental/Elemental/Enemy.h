@@ -1,9 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "enums.h"
+#include "EnemyAttack.h"
+class Player;
 using namespace sf;
 using namespace std;
-
+class EnemyAttack;
 class Enemy
 {
 public:
@@ -11,18 +13,27 @@ public:
 	~Enemy();
 	Sprite icon;
 	void Draw(RenderWindow* window);
-	void Damage(float dmg);
+	void Damage(float dmg, ELEMENT spellType);
 	void Update(Time t);
+	virtual void Attack(Player* player) {};
 	bool IsDead() { return bDead; }
 protected:
 	Texture tex;
-	float health;
-	ELEMENT element;
-	bool bDead;
+	float health = 0;
+	float damage = 0;
+	ELEMENT element = FIRE;
+	bool bDead = false;
 	bool bDamageFlash = false;
-	float flashTimer = 0;
-	float flashDuration = 0.2;
+	float flashTimer = 0.f;
+	float flashDuration = 0.2f;
 	Shader damageShade;
+
+	float attackRate = 1.f;
+	float attackTimer = 0;
+	bool bCanAttack = false;
+
+	Player* player;
+	vector<EnemyAttack*>* attacks;
 };
 
 class Dummy : public Enemy

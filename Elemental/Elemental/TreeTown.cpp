@@ -42,6 +42,8 @@ TreeTown::TreeTown() {
 	textures.insert({ "well",tex });
 	pathing.insert({ "well", NOT_PATHABLE });
 
+	pathing.insert({ "empty", PATHABLE });
+
 	string layoutString[10][10] = {
 	{"tree","tree","tree","tree","tree","empty","empty","tree","tree","tree"},
 	{"tree","houseTL","houseTR","empty","empty","empty","empty","empty","empty","tree"},
@@ -63,10 +65,16 @@ TreeTown::TreeTown() {
 		layout.push_back(tiles);
 	}
 
-
-	enemies.push_back(new Dummy());
+	
 }
 
 TreeTown::~TreeTown() {
 
+}
+
+void TreeTown::Setup() {
+	Enemy* slime = new Slime(enemyAttacks, player);
+	slime->icon.setPosition(110, 64);
+	enemies.push_back(slime);
+	enemies.push_back(new Dummy());
 }

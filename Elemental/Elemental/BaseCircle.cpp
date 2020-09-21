@@ -9,7 +9,8 @@ BaseCircle::BaseCircle(Vector2f pos,float dmg,ELEMENT ele, EFFECT_TYPE effType,f
 	icon.setScale(size,size);
 	damage = dmg;
 	type = effType;
-	switch (ele) {
+	element = ele;
+	switch (element) {
 	case FIRE:
 		effectShade.loadFromFile("Textures/Shaders/effectFire.vert", Shader::Vertex);
 		break;

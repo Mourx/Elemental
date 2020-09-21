@@ -9,6 +9,7 @@
 #include "SpellEffect.h"
 using namespace sf;
 using namespace std;
+class TileMap;
 class Player
 {
 public:
@@ -42,8 +43,8 @@ private:
 	map<ELEMENT, vector<SPELL>* > spellTable;
 	
 	vector<ELEMENT> elementOrder;
-	float leftElementIndex = 0;
-	float rightElementIndex = 1;
+	int leftElementIndex = 0;
+	int rightElementIndex = 1;
 
 	Sprite SpellBackLayerLeft;
 	Sprite SpellBackLayerRight;
@@ -52,7 +53,7 @@ private:
 
 	bool bSwitchedSpellLeft = false;
 	bool bSwitchedSpellRight = false;
-	float spellSwitchCooldown = 0.3;
+	float spellSwitchCooldown = 0.3f;
 	float spellSwitchTimerLeft = 0;
 	float spellSwitchTimerRight = 0;
 
@@ -61,6 +62,7 @@ private:
 	float elementSwitchCooldown = 2;
 	float elementSwitchTimerLeft = 0;
 	float elementSwitchTimerRight = 0;
+
 
 };
 

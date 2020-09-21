@@ -26,6 +26,7 @@ public:
 	bool IsReady() { return bReady; }
 	Sprite currentBackground;
 protected:
+	bool bActive = false;
 	bool bReady = true;
 	SPELL spell;
 	Sprite spellIcon;
@@ -34,7 +35,7 @@ protected:
 	Texture texBackground;
 	Texture texCooldown;
 	Shader cooldownShader;
-	float spellIndex;
+	int spellIndex;
 	float cooldown;
 	float cooldownTimer;
 	vector<Spell*>* active;

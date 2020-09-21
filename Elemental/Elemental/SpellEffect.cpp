@@ -25,7 +25,7 @@ void SpellEffect::AddEnemy(Enemy* e) {
 		}
 	}
 	if (!bContains) {
-		e->Damage(damage);
+		e->Damage(damage,this->element);
 		affectedEnemies.push_back(e);
 	}
 }

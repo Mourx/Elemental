@@ -1,3 +1,21 @@
-﻿  InstantEffect.cpp
-c:\users\joel\documents\elemental\elemental\elemental\elemental\enemy.h(24): warning C4305: 'initializing': truncation from 'double' to 'float'
+﻿  BaseCircle.cpp
+  Dummy.cpp
+  Enemy.cpp
+  EnemyAttack.cpp
+  EnemyMelee.cpp
+  EnemyProjectile.cpp
+  FireSpells.h
+  InstantEffect.cpp
+  LightningStrike.cpp
+  Player.cpp
+  Slime.cpp
+  Spell.cpp
+  SpellEffect.cpp
+  SpellSlot.cpp
+  TileMap.cpp
+  TreeTown.cpp
+  WaterBall.cpp
+  WaterPulse.cpp
+  main.cpp
+  Generating Code...
   Elemental.vcxproj -> C:\Users\Joel\Documents\Elemental\Elemental\Elemental\x64\Debug\Elemental.exe

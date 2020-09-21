@@ -7,7 +7,7 @@ Player::Player(TileMap* c) {
 	icon.setOrigin(16, 16);
 
 	currentMap = c;
-
+	currentMap->SetPlayer(this);
 
 	leftBackTex.loadFromFile("Textures/Spells/SpellSlots/SpellSlot_BackLayerLeft.png");
 	rightBackTex.loadFromFile("Textures/Spells/SpellSlots/SpellSlot_BackLayerLeft.png");
@@ -21,9 +21,9 @@ Player::Player(TileMap* c) {
 	vector<SPELL>* earthSpells = new vector<SPELL>(0);
 	vector<SPELL>* airSpells = new vector<SPELL>(0);
 	vector<SPELL>* bloodSpells = new vector<SPELL>(0);
-	vector<SPELL>* lightSpells = new vector<SPELL>(0);
+	vector<SPELL>* soulSpells = new vector<SPELL>(0);
 	vector<SPELL>* voidSpells = new vector<SPELL>(0);
-	elementOrder = { FIRE,WATER,EARTH,AIR,BLOOD,LIGHT,VOID };
+	elementOrder = { FIRE,WATER,EARTH,AIR,BLOOD,SOUL,VOID };
 	
 	fireSpells->push_back(FIREBOLT);
 	spellTable.insert({ FIRE, fireSpells });
@@ -41,7 +41,7 @@ Player::Player(TileMap* c) {
 	currentElements.push_back(AIR);
 
 	spellTable.insert({ BLOOD,bloodSpells });
-	spellTable.insert({ LIGHT,lightSpells });
+	spellTable.insert({ SOUL,soulSpells });
 	spellTable.insert({ VOID,voidSpells });
 
 	leftSpell = new SpellSlot(activeSpells, spellTable[elementOrder[leftElementIndex]], elementOrder[leftElementIndex]);
@@ -77,7 +77,17 @@ void Player::Update(Time t) {
 	}
 	for (Enemy* e : currentMap->enemies) {
 		e->Update(t);
+		if (e->IsDead()) {
+			currentMap->enemies.erase(remove(currentMap->enemies.begin(), currentMap->enemies.end(), e), currentMap->enemies.end());
+		}
 	
+	}
+	for (EnemyAttack* atk : *(currentMap->enemyAttacks)) {
+		atk->Update(t);
+		vector<EnemyAttack*>* attacks = (currentMap->enemyAttacks);
+		if (atk->IsFinished()) {
+			attacks->erase(remove(attacks->begin(), attacks->end(), atk), attacks->end());
+		}
 	}
 
 
@@ -290,6 +300,21 @@ void Player::UpdateCollisions() {
 		for (Enemy* e : currentMap->enemies) {
 			if (e->icon.getGlobalBounds().intersects(effect->icon.getGlobalBounds())) {
 				effect->AddEnemy(e);
+			}
+		}
+	}
+	for (EnemyAttack* atk : *(currentMap->enemyAttacks)) {
+		for (vector<Tile*> rows : currentMap->layout) {
+			for (Tile* tile : rows) {
+				if (!atk->HasCollided() && tile->icon.getGlobalBounds().intersects(atk->icon.getGlobalBounds())) {
+					activeEffects.push_back(atk->Collide());
+				}
+			}
+			if (!atk->HasCollided() && this->icon.getGlobalBounds().intersects(atk->icon.getGlobalBounds())) {
+				activeEffects.push_back(atk->Collide());
+			}
+			if (!atk->HasCollided() && atk->ReachedTarget()) {
+				activeEffects.push_back(atk->Collide());
 			}
 		}
 	}

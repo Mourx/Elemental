@@ -30,10 +30,24 @@ void Enemy::Update(Time t) {
 			flashTimer = 0;
 		}
 	}
+	if (!bCanAttack) {
+		float time = t.asSeconds();
+		attackTimer += time;
+		if (attackTimer >= attackRate) {
+			bCanAttack = true;
+			attackTimer = 0;
+		}
+	}
+	if (bCanAttack) {
+		this->Attack(player);
+		bCanAttack = false;
+	}
 }
 
-void Enemy::Damage(float dmg) {
-	health -= dmg;
+void Enemy::Damage(float dmg,ELEMENT spellType) {
+	float multi = matchups.GetMultiplier(spellType, this->element);
+	float totalDmg = dmg * multi;
+	health -= totalDmg;
 	if (health <= 0) {
 		health = 0;
 		bDead = true;
@@ -41,5 +55,5 @@ void Enemy::Damage(float dmg) {
 	else {
 		bDamageFlash = true;
 	}
-	printf("%2.0f damage taken, %2.0f health left\n", dmg, health);
+	printf("%2.0f damage taken, %2.0f health left\n", totalDmg, health);
 }

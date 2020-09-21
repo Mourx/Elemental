@@ -49,3 +49,5 @@ SpellEffect* Spell::Collide() {
 void Spell::EffectUpdate(Time t) {
 
 }
+
+

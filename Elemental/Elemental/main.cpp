@@ -11,7 +11,8 @@ int main() {
 	Clock clock;
 	TileMap* currentMap;
 	currentMap = new TreeTown();
-	Player* player = new Player(currentMap);
+	static Player* player = new Player(currentMap);
+	
 	window.setIcon(gimp_image.width,gimp_image.height,gimp_image.pixel_data);
 	View camera = window.getDefaultView();
 	camera.zoom(1);

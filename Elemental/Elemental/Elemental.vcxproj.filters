@@ -40,6 +40,18 @@
     <Filter Include="Source Files\Spells\AirSpells">
       <UniqueIdentifier>{ae041f32-0dbc-4f8d-8a0d-7fef0150922c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Enemies\WaterEnemies">
+      <UniqueIdentifier>{99ef4c4c-4b51-4e40-88c9-cb7efee596f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Enemies">
+      <UniqueIdentifier>{f0cec7aa-de0c-4992-b5ab-63eeefb92729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Enemies\WaterEnemies">
+      <UniqueIdentifier>{a05c791b-cff1-4a2c-af44-992d7b324dc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Enemies\Attacks">
+      <UniqueIdentifier>{5d71edca-372e-4c61-ab92-baad42a792de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -93,6 +105,21 @@
     <ClCompile Include="WaterPulse.cpp">
       <Filter>Source Files\Spells\WaterSpells</Filter>
     </ClCompile>
+    <ClCompile Include="Slime.cpp">
+      <Filter>Source Files\Enemies\WaterEnemies</Filter>
+    </ClCompile>
+    <ClCompile Include="enums.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyAttack.cpp">
+      <Filter>Source Files\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyMelee.cpp">
+      <Filter>Source Files\Enemies\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyProjectile.cpp">
+      <Filter>Source Files\Enemies\Attacks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -105,9 +132,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="enums.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SpellSlot.h">
@@ -126,6 +150,15 @@
       <Filter>Header Files\Spells</Filter>
     </ClInclude>
     <ClInclude Include="icon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterEnemies.h">
+      <Filter>Header Files\Enemies\WaterEnemies</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyAttack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
