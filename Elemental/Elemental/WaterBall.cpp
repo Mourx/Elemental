@@ -48,5 +48,5 @@ void WaterBall::EffectUpdate(Time t) {
 }
 SpellEffect* WaterBall::Collide() {
 	Spell::Collide();
-	return new BaseCircle(icon.getPosition(), damage, element,EFFECT_STATIC,1.0f);
+	return new BaseCircle(icon.getPosition(), damage, element,EFFECT_STATIC,1.0f, false);
 }

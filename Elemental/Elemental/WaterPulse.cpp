@@ -50,5 +50,5 @@ void WaterPulse::EffectUpdate(Time t) {
 }
 SpellEffect* WaterPulse::Collide() {
 	Spell::Collide();
-	return new BaseCircle(icon.getPosition(), damage, element, EFFECT_SELF,2.0f);
+	return new BaseCircle(icon.getPosition(), damage, element, EFFECT_SELF,2.0f,false);
 }

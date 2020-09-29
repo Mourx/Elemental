@@ -34,5 +34,5 @@ void EnemyProjectile::Update(Time t) {
 
 SpellEffect* EnemyProjectile::Collide() {
 	EnemyAttack::Collide();
-	return new BaseCircle(icon.getPosition(), damage, ele, EFFECT_STATIC, 1.0f);
+	return new BaseCircle(icon.getPosition(), damage, ele, EFFECT_STATIC, 1.0f, true);
 }

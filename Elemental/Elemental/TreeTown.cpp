@@ -45,7 +45,7 @@ TreeTown::TreeTown() {
 	pathing.insert({ "empty", PATHABLE });
 
 	string layoutString[10][10] = {
-	{"tree","tree","tree","tree","tree","empty","empty","tree","tree","tree"},
+	{"tree","tree","tree","tree","tree","tree","tree","tree","tree","tree"},
 	{"tree","houseTL","houseTR","empty","empty","empty","empty","empty","empty","tree"},
 	{"tree","houseBL","houseBR","empty","empty","empty","empty","empty","empty","tree"},
 	{"tree","empty","empty","empty","empty","empty","empty","empty","empty","tree"},

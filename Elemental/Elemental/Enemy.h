@@ -16,8 +16,10 @@ public:
 	void Damage(float dmg, ELEMENT spellType);
 	void Update(Time t);
 	virtual void Attack(Player* player) {};
+	
 	bool IsDead() { return bDead; }
 protected:
+	virtual void Move();
 	Texture tex;
 	float health = 0;
 	float damage = 0;
@@ -34,6 +36,12 @@ protected:
 
 	Player* player;
 	vector<EnemyAttack*>* attacks;
+
+	bool bCanMove = false;
+	float moveTimer = 0.f;
+	float moveDelay = 2.f;
+	float HSpeed = 3;
+	float VSpeed = 3;
 };
 
 class Dummy : public Enemy

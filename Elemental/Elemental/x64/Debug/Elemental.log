@@ -1,21 +1,4 @@
-﻿  BaseCircle.cpp
-  Dummy.cpp
-  Enemy.cpp
-  EnemyAttack.cpp
-  EnemyMelee.cpp
-  EnemyProjectile.cpp
-  FireSpells.h
-  InstantEffect.cpp
-  LightningStrike.cpp
-  Player.cpp
-  Slime.cpp
-  Spell.cpp
-  SpellEffect.cpp
-  SpellSlot.cpp
-  TileMap.cpp
-  TreeTown.cpp
-  WaterBall.cpp
-  WaterPulse.cpp
-  main.cpp
-  Generating Code...
+﻿  Enemy.cpp
+c:\users\joel\documents\elemental\elemental\elemental\elemental\enemy.cpp(54): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\joel\documents\elemental\elemental\elemental\elemental\enemy.cpp(55): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Elemental.vcxproj -> C:\Users\Joel\Documents\Elemental\Elemental\Elemental\x64\Debug\Elemental.exe

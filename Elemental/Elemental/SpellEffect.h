@@ -16,6 +16,7 @@ public:
 	void AddEnemy(Enemy* e);
 	EFFECT_TYPE GetType() { return type; }
 	bool IsFinished() { return bEffect; }
+	bool IsEnemyAttack() { return bEnemySource; }
 	Sprite icon;
 protected:
 	Texture tex;
@@ -28,12 +29,13 @@ protected:
 	bool bEffect = true;
 	EFFECT_TYPE type;
 	ELEMENT element;
+	bool bEnemySource = false;
 };
 
 class BaseCircle : public SpellEffect
 {
 public:
-	BaseCircle(Vector2f pos, float dmg, ELEMENT type, EFFECT_TYPE effType,float size);
+	BaseCircle(Vector2f pos, float dmg, ELEMENT type, EFFECT_TYPE effType,float size, bool bIsEnemy);
 	~BaseCircle();
 	void Update(Time t);
 

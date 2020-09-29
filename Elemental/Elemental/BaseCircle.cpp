@@ -1,6 +1,6 @@
 #include "SpellEffect.h"
 
-BaseCircle::BaseCircle(Vector2f pos,float dmg,ELEMENT ele, EFFECT_TYPE effType,float size) {
+BaseCircle::BaseCircle(Vector2f pos,float dmg,ELEMENT ele, EFFECT_TYPE effType,float size, bool bIsEnemy) {
 	tex.loadFromFile("Textures/SpellEffects/BaseCircle.png");
 	icon.setTexture(tex);
 	icon.setOrigin(16, 16);
@@ -10,6 +10,7 @@ BaseCircle::BaseCircle(Vector2f pos,float dmg,ELEMENT ele, EFFECT_TYPE effType,f
 	damage = dmg;
 	type = effType;
 	element = ele;
+	bEnemySource = bIsEnemy;
 	switch (element) {
 	case FIRE:
 		effectShade.loadFromFile("Textures/Shaders/effectFire.vert", Shader::Vertex);

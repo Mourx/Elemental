@@ -42,6 +42,24 @@ void Enemy::Update(Time t) {
 		this->Attack(player);
 		bCanAttack = false;
 	}
+	if (!bCanMove) {
+		float time = t.asSeconds();
+		moveTimer += time;
+		if (moveTimer >= moveDelay) {
+			bCanMove = true;
+			moveTimer = 0;
+			HSpeed = 2 * rand() % 5 * sin(rand() % 90);
+			VSpeed = 2 * rand() % 5 * sin(rand() % 90);
+		}
+	}
+	if (bCanMove) {
+		icon.setPosition(icon.getPosition() + Vector2f(HSpeed, VSpeed));
+	}
+
+}
+
+void Enemy::Move() {
+
 }
 
 void Enemy::Damage(float dmg,ELEMENT spellType) {

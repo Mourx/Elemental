@@ -298,8 +298,13 @@ void Player::UpdateCollisions() {
 	}
 	for (SpellEffect* effect : activeEffects) {
 		for (Enemy* e : currentMap->enemies) {
-			if (e->icon.getGlobalBounds().intersects(effect->icon.getGlobalBounds())) {
+			if (!effect->IsEnemyAttack() && e->icon.getGlobalBounds().intersects(effect->icon.getGlobalBounds())) {
 				effect->AddEnemy(e);
+			}
+			else {
+				if (this->icon.getGlobalBounds().intersects(effect->icon.getGlobalBounds())) {
+					//damage player;
+				}
 			}
 		}
 	}
